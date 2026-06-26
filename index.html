@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LevelOne SiteLift | Websites for Local Businesses, Built Fast</title>
+<meta name="description" content="LevelOne SiteLift builds fast, professional websites for local businesses — food trucks, bakeries, and more. Live in days, flat fee, no subscriptions.">
+
+<meta property="og:title" content="LevelOne SiteLift">
+<meta property="og:description" content="Websites for local businesses, built fast. Live in days, flat fee.">
+<meta property="og:type" content="website">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "LevelOne SiteLift",
+  "description": "Website design and development service for local businesses.",
+  "priceRange": "$300-$600"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0B0D0C;
+    --bg-soft: #121514;
+    --line: #232826;
+    --ink: #ECEFED;
+    --ink-dim: #9CA39F;
+    --accent: #4DFFB4;
+    --accent-dim: #1F4A3A;
+    --warn-orange: #FF7A45;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .display {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.3rem 6%;
+    background: rgba(11,13,12,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo {
+    font-weight: 700;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .nav-logo .tag {
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2.2rem; align-items: center; }
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--ink-dim);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--accent);
+    color: var(--bg) !important;
+    padding: 0.55rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+  }
+  .nav-cta:hover { background: #6BFFC5 !important; }
+
+  .nav-toggle {
+    display: none;
+    background: none; border: none;
+    color: var(--ink);
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  @media (max-width: 760px) {
+    .nav-links {
+      position: fixed; top: 0; right: -100%;
+      width: 78%; height: 100vh;
+      background: var(--bg-soft);
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem;
+      gap: 1.8rem;
+      transition: right 0.3s ease;
+      border-left: 1px solid var(--line);
+    }
+    .nav-links.open { right: 0; }
+    .nav-toggle { display: block; }
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 6% 4rem;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 60%;
+    height: 100%;
+    background:
+      radial-gradient(circle at 80% 20%, rgba(77,255,180,0.10), transparent 50%),
+      linear-gradient(180deg, transparent, transparent);
+    pointer-events: none;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.35;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 0%, transparent 75%);
+  }
+
+  .hero-content { max-width: 900px; position: relative; z-index: 2; }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 0.45rem 0.9rem;
+    border-radius: 30px;
+    font-size: 0.78rem;
+    color: var(--ink-dim);
+    margin-bottom: 2rem;
+  }
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+    font-weight: 700;
+    line-height: 1.04;
+    margin-bottom: 1.6rem;
+  }
+  .hero h1 .accent { color: var(--accent); }
+
+  .hero-sub {
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    color: var(--ink-dim);
+    max-width: 56ch;
+    margin-bottom: 2.6rem;
+  }
+
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.8rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 7px;
+    transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px -8px rgba(77,255,180,0.4); }
+  .btn-outline {
+    border: 1px solid var(--line);
+    color: var(--ink);
+    background: var(--bg-soft);
+  }
+  .btn-outline:hover { border-color: var(--accent); }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding-top: 2.2rem;
+    border-top: 1px solid var(--line);
+  }
+  .stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat-label { font-size: 0.82rem; color: var(--ink-dim); margin-top: 0.2rem; }
+
+  @media (max-width: 760px) {
+    .hero { padding: 7rem 6% 3rem; }
+    .hero-stats { gap: 2rem; }
+  }
+
+  /* ===== SECTION SHARED ===== */
+  section { padding: 6rem 6%; position: relative; }
+  .section-head { margin-bottom: 3rem; max-width: 700px; }
+  .section-eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.9rem;
+  }
+  .section-head h2 {
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-weight: 700;
+  }
+  .section-head p {
+    color: var(--ink-dim);
+    font-size: 1.05rem;
+    margin-top: 1rem;
+  }
+
+  /* ===== WORK / DEMOS ===== */
+  .work { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .work-card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+    display: block;
+  }
+  .work-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+  .work-thumb {
+    aspect-ratio: 16/10;
+    position: relative;
+    overflow: hidden;
+  }
+  .work-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+  .work-card:hover .work-thumb img { transform: scale(1.05); }
+
+  .work-thumb-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.7));
+    display: flex;
+    align-items: flex-end;
+    padding: 1.2rem;
+  }
+  .work-niche-tag {
+    background: rgba(11,13,12,0.85);
+    border: 1px solid rgba(77,255,180,0.3);
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+  }
+
+  .work-info { padding: 1.5rem 1.6rem 1.8rem; }
+  .work-info h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .work-info p {
+    color: var(--ink-dim);
+    font-size: 0.92rem;
+    margin-bottom: 1.1rem;
+  }
+  .work-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  @media (max-width: 760px) {
+    .work-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== HOW IT WORKS ===== */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .process-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.8rem 1.5rem;
+    position: relative;
+  }
+  .process-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .process-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .process-card p { color: var(--ink-dim); font-size: 0.88rem; }
+
+  @media (max-width: 900px) {
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .process-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== PRICING ===== */
+  .pricing { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .pricing-box {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--bg);
+    border: 1px solid var(--accent-dim);
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-box::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: 50%;
+    width: 400px; height: 400px;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(77,255,180,0.12), transparent 70%);
+    pointer-events: none;
+  }
+  .price-tag {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 3.6rem);
+    font-weight: 700;
+    color: var(--accent);
+    margin: 1.2rem 0 0.3rem;
+    position: relative;
+  }
+  .price-sub { color: var(--ink-dim); font-size: 0.9rem; margin-bottom: 2rem; position: relative; }
+  .price-features { text-align: left; max-width: 360px; margin: 0 auto 2.2rem; position: relative; }
+  .price-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.55rem 0;
+    font-size: 0.92rem;
+    color: var(--ink);
+  }
+  .price-feature .check { color: var(--accent); font-weight: 700; }
+
+  .addon-note {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--ink-dim);
+    position: relative;
+  }
+  .addon-note strong { color: var(--ink); }
+
+  /* ===== CONTACT / FOOTER ===== */
+  .contact-section { text-align: center; padding: 7rem 6%; }
+  .contact-section h2 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; margin-bottom: 1rem; }
+  .contact-section p { color: var(--ink-dim); font-size: 1.05rem; max-width: 500px; margin: 0 auto 2.5rem; }
+  .contact-methods { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 0.9rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: border-color 0.2s;
+  }
+  .contact-method:hover { border-color: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2.2rem 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.82rem;
+    color: var(--ink-dim);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo display">LevelOne <span class="tag">SiteLift</span></div>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#work">Work</a>
+    <a href="#process">Process</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-content">
+    <div class="status-pill"><span class="status-dot"></span> Currently booking new builds</div>
+    <h1 class="display">Local businesses get <span class="accent">real websites,</span> fast.</h1>
+    <p class="hero-sub">LevelOne SiteLift builds professional, fully-deployed websites for local businesses — food trucks, bakeries, and beyond. No subscriptions, no bloated builders, no waiting weeks. Just a real site, live in days.</p>
+    <div class="hero-ctas">
+      <a href="#work" class="btn btn-primary">See the Work →</a>
+      <a href="#contact" class="btn btn-outline">Get a Quote</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num display">2–4</div>
+        <div class="stat-label">Days to launch</div>
+      </div>
+      <div>
+        <div class="stat-num display">$300–600</div>
+        <div class="stat-label">Flat fee, no surprises</div>
+      </div>
+      <div>
+        <div class="stat-num display">100%</div>
+        <div class="stat-label">Yours to keep</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="section-head">
+    <div class="section-eyebrow">Recent Builds</div>
+    <h2 class="display">See it before you buy it</h2>
+    <p>Sample builds across different local business types — built to show exactly what your site could look like.</p>
+  </div>
+  <div class="work-grid">
+    <a href="https://claude.ai" class="work-card" id="bbqCard">
+      <div class="work-thumb">
+        <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=900&q=80" alt="Smoke and Yard BBQ demo site preview">
+        <div class="work-thumb-overlay"><span class="work-niche-tag">Food Truck</span></div>
+      </div>
+      <div class="work-info">
+        <h3 class="display">Smoke & Yard BBQ</h3>
+        <p>A backyard-cookout themed site with a built-in weekly schedule so customers always know where to find the truck.</p>
+        <span class="work-link">View live demo →</span>
+      </div>
+    </a>
+    <a href="https://claude.ai" class="work-card" id="bakeryCard">
+      <div class="work-thumb">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900&q=80" alt="Wheat and Bloom Bakery demo site preview">
+        <div class="work-thumb-overlay"><span class="work-niche-tag">Bakery & Catering</span></div>
+      </div>
+      <div class="work-info">
+        <h3 class="display">Wheat & Bloom Bakery</h3>
+        <p>Splits everyday bakery visitors from event/catering inquiries, with a working inquiry form for custom orders.</p>
+        <span class="work-link">View live demo →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="section-head">
+    <div class="section-eyebrow">How It Works</div>
+    <h2 class="display">From nothing to live, in four steps</h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-card">
+      <span class="process-num display">01</span>
+      <h3>Quick chat</h3>
+      <p>Tell me about your business — what you sell, your vibe, a few photos if you've got them.</p>
+    </div>
+    <div class="process-card">
+      <span class="process-num display">02</span>
+      <h3>I build it</h3>
+      <p>A custom-designed site goes together fast — usually within a couple of days.</p>
+    </div>
+    <div class="process-card">
+      <span class="process-num display">03</span>
+      <h3>You review</h3>
+      <p>I send you a live link. We tweak anything that's not quite right before it's final.</p>
+    </div>
+    <div class="process-card">
+      <span class="process-num display">04</span>
+      <h3>It goes live</h3>
+      <p>Deployed, working, and yours — with everything you need to know handed off clearly.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="section-head" style="margin: 0 auto 3rem; text-align: center;">
+    <div class="section-eyebrow">Simple Pricing</div>
+    <h2 class="display">One flat fee. No subscriptions.</h2>
+  </div>
+  <div class="pricing-box">
+    <div class="section-eyebrow">Standard Build</div>
+    <div class="price-tag display">$300–600</div>
+    <div class="price-sub">One-time fee · based on scope · paid once</div>
+    <div class="price-features">
+      <div class="price-feature"><span class="check">✓</span> Custom-designed, mobile-friendly site</div>
+      <div class="price-feature"><span class="check">✓</span> Deployed live with a working URL</div>
+      <div class="price-feature"><span class="check">✓</span> SEO basics built in from day one</div>
+      <div class="price-feature"><span class="check">✓</span> Full ownership — no lock-in, no subscription</div>
+      <div class="price-feature"><span class="check">✓</span> Delivered in days, not weeks</div>
+    </div>
+    <div class="addon-note">Want a custom domain or ongoing edits handled for you? <strong>Optional add-ons available</strong> — just ask.</div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <h2 class="display">Let's get your business online.</h2>
+  <p>Send a quick message with what you're looking for, and I'll get back to you with next steps.</p>
+  <div class="contact-methods">
+    <a href="mailto:hello@levelonesitelift.com" class="contact-method">✉️ hello@levelonesitelift.com</a>
+    <a href="tel:6195550199" class="contact-method">📞 (619) 555-0199</a>
+  </div>
+</section>
+
+<footer>
+  <div class="display" style="font-weight:700;">LevelOne SiteLift</div>
+  <div>© 2026 LevelOne SiteLift. Built fast, built right.</div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>
